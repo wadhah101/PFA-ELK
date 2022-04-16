@@ -63,6 +63,7 @@ services:
     environment:
       LS_JAVA_OPTS: -Xmx256m -Xms256m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+      ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST:-}
     networks:
       - elk
     depends_on:
@@ -79,6 +80,7 @@ services:
       - "5601:5601"
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+      ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST:-}
     networks:
       - elk
     depends_on:

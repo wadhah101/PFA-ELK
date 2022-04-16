@@ -7,8 +7,7 @@ server.name: kibana
 # TODO what does this mean
 server.host: 0.0.0.0
 
-# TODO read host from .env
-elasticsearch.hosts: ["http://elasticsearch:9200"]
+elasticsearch.hosts: ['http://${ELASTICSEARCH_HOST}']
 monitoring.ui.container.elasticsearch.enabled: true
 
 ## X-Pack security credentials
