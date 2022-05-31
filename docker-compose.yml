@@ -25,6 +25,7 @@ services:
       - elk
 
   elasticsearch:
+    hostname: elasticsearch
     build:
       context: elasticsearch/
       args:
@@ -89,6 +90,7 @@ services:
 networks:
   elk:
     driver: bridge
+    name: elk
 
 volumes:
   setup:
