@@ -60,6 +60,17 @@ services:
     command: --no-config
     networks:
       - elk
+  elasalert:
+    image: jertel/elastalert2
+    restart: unless-stopped
+    ports:
+      - 8098:8098
+    environment:
+      - ES_HOST=${ELASTIC_HOST}
+      - ES_PORT=9200
+
+    networks:
+      - elk
 
 networks:
   elk:
