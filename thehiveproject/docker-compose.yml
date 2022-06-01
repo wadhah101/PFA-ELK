@@ -61,7 +61,8 @@ services:
     networks:
       - elk
   elasalert:
-    image: jertel/elastalert2
+    build:
+      context: "./elasalert2"
     restart: unless-stopped
     ports:
       - 8098:8098
