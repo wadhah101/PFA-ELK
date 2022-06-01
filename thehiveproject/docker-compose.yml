@@ -30,6 +30,7 @@ services:
     build:
       context: cortex
     restart: unless-stopped
+    user: root
     command: --no-config
     environment:
       - 'JOB_DIRECTORY=${JOB_DIRECTORY}'
@@ -48,14 +49,15 @@ services:
     image: 'thehiveproject/thehive4:latest'
     container_name: thehive4
     restart: unless-stopped
+    user: root
     ports:
       - '9000:9000'
-      # volumes:
+    volumes:
       # - ./vol/thehive/application.conf:/etc/thehive/application.conf
-      # - ./vol/thehive/db:/opt/thp/thehive/db
-      # - ./vol/thehive/index:/opt/thp/thehive/index
-      # - ./vol/thehive/data:/opt/thp/thehive/data
-    command: --cortex-port 9001 --cortex-key ${CORTEX_KEY} --es-uri http://elasticsearch:9200
+      - ./vol/thehive/db:/opt/thp/thehive/db
+      - ./vol/thehive/index:/opt/thp/thehive/index
+      - ./vol/thehive/data:/opt/thp/thehive/data
+    command: --no-config
     networks:
       - elk
 
