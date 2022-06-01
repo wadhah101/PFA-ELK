@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   elasticsearch:
-    image: 'elasticsearch:7.17.4'
+    image: 'elasticsearch:7.11.1'
     hostname: elasticsearch
     restart: unless-stopped
     ports:
@@ -29,9 +29,8 @@ services:
   cortex:
     build:
       context: cortex
-    container_name: cortex
     restart: unless-stopped
-    command: --job-directory ${JOB_DIRECTORY}
+    command: --no-config
     environment:
       - 'JOB_DIRECTORY=${JOB_DIRECTORY}'
     volumes:
@@ -56,7 +55,7 @@ services:
       # - ./vol/thehive/db:/opt/thp/thehive/db
       # - ./vol/thehive/index:/opt/thp/thehive/index
       # - ./vol/thehive/data:/opt/thp/thehive/data
-    command: '--no-config --no-config-secret'
+    command: --cortex-port 9001 --cortex-key ${CORTEX_KEY} --es-uri http://elasticsearch:9200
     networks:
       - elk
 
