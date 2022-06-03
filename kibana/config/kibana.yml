@@ -7,10 +7,12 @@ server.name: kibana
 # TODO what does this mean
 server.host: 0.0.0.0
 
-elasticsearch.hosts: ['http://${ELASTICSEARCH_HOST}']
+elasticsearch.hosts: ["http://${ELASTICSEARCH_HOST}"]
 monitoring.ui.container.elasticsearch.enabled: true
 
 ## X-Pack security credentials
 #
 elasticsearch.username: kibana_system
 elasticsearch.password: ${KIBANA_SYSTEM_PASSWORD}
+
+server.publicBaseUrl: https://kibana.pfasoc.online
