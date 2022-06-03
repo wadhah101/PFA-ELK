@@ -4,7 +4,6 @@
 #
 server.name: kibana
 
-# TODO what does this mean
 server.host: 0.0.0.0
 
 elasticsearch.hosts: ["http://${ELASTICSEARCH_HOST}"]

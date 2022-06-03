@@ -3,7 +3,6 @@
 ## https://github.com/elastic/elasticsearch/blob/master/distribution/docker/src/docker/config/elasticsearch.yml
 #
 cluster.name: "docker-cluster"
-# TODO what does this mean ?
 network.host: 0.0.0.0
 
 bootstrap.memory_lock: false
