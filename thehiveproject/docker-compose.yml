@@ -64,10 +64,12 @@ services:
     build:
       context: "./elasalert2"
     restart: unless-stopped
+    command: --verbose
+    user: root
     ports:
       - 8098:8098
     environment:
-      - ES_HOST=${ELASTIC_HOST}
+      - ES_HOST=elastic.pfasoc.online
       - ES_PORT=9200
 
     networks:

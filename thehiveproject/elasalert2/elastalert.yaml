@@ -4,9 +4,12 @@ run_every:
   seconds: 10
 
 buffer_time:
-  minutes: 15
+  minutes: 50
 
 writeback_index: elastalert_status
+writeback_alias: elastalert_alerts
 
 alert_time_limit:
   days: 2
+
+use_ssl: True
