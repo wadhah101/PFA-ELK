@@ -23,25 +23,50 @@ query_key:
   - source.ip
 
 include:
-  - host.hostname
   - user.name
   - source.ip
+  - agent.type
+  - event.module
+  - message
 
 include_match_in_root: true
 
-alert_subject: "SSH abuse on <{}>"
+alert_subject: "SSH abuse from <{}>"
 alert_subject_args:
-  - host.hostname
+  - source.ip
 
 alert_text: |-
-  An attack on {} is detected.
+  An SSH brute force attack is detected.
   The attacker looks like:
   User: {}
   IP: {}
+
 alert_text_args:
-  - host.hostname
   - user.name
   - source.ip
 
 alert:
   - debug
+  - hivealerter
+
+hive_connection:
+  hive_host: http://thehive
+  hive_port: 9000
+  hive_apikey: Pkcf/ereoqLjI6BrP5kn/54a2xsVt4xC
+
+hive_alert_config:
+  # title: 'Title'  ## This will default to {rule[index]_rule[name]} if not provided
+  type: "external"
+  source: "elastalert"
+  # description: "{match[field1]} {rule[name]} Sample description"
+  severity: 2
+  tags: ["SSH" , "Brute force"]
+  tlp: 3
+  status: "New"
+  follow: True
+
+hive_observable_data_mapping:
+  # - timestamp: "{match[field1]}"
+  # - username: "{match[user.name]}"
+  # - ip: "{match[source.ip]}"
+  - yolo: wadhah

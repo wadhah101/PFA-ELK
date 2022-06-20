@@ -11,5 +11,3 @@ writeback_alias: elastalert_alerts
 
 alert_time_limit:
   days: 2
-
-use_ssl: True

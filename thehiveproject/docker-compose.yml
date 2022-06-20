@@ -49,6 +49,8 @@ services:
     image: 'thehiveproject/thehive4:latest'
     container_name: thehive4
     restart: unless-stopped
+    depends_on:
+      - elasticsearch
     user: root
     ports:
       - '9000:9000'
